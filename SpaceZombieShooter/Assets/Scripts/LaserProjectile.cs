@@ -25,9 +25,9 @@ public class LaserProjectile : MonoBehaviour {
 	void OnCollisionEnter (Collision collision)
 	{
 
-		if(collision.gameObject.tag == "Enemy")
+		if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Friend")
 		{
-			collision.gameObject.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+			collision.gameObject.SendMessageUpwards("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
 
 			// destroy laser on collision
 			ContactPoint contact = collision.contacts[0]; 	// point of collision
@@ -37,17 +37,6 @@ public class LaserProjectile : MonoBehaviour {
 			Destroy(gameObject);
 		}
 
-
-		if(collision.gameObject.tag == "Prop")
-		{
-			collision.gameObject.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
-
-			ContactPoint contact = collision.contacts[0]; 	// point of collision
-			Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-			Vector3 pos = contact.point;
-			Instantiate (laserHitFXPrefab, pos, rot);
-			Destroy(gameObject);
-		}
 
 	}
 
