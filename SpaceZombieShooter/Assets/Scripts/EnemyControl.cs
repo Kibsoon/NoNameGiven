@@ -66,4 +66,5 @@ public class EnemyControl : MonoBehaviour {
         myTransform.rotation = Quaternion.Slerp(myTransform.rotation, rotation, Time.deltaTime);
         return myTransform.position;
     }
+
 }
