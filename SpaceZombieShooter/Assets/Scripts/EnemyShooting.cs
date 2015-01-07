@@ -15,8 +15,7 @@ namespace Assets.Scripts
         public bool IsFiring { get; set; }
 
         // firing point transforms for launching projectiles
-        public Transform leftFirePoint;
-        public Transform rightFirePoint;
+        public Transform firePoint;
 
         // our projectile object
         public GameObject laserPrefab;
@@ -57,8 +56,7 @@ namespace Assets.Scripts
             {
                 fireFXSound.Play();
             }
-            GameObject.Instantiate(laserPrefab, leftFirePoint.position, leftFirePoint.rotation);
-            GameObject.Instantiate(laserPrefab, rightFirePoint.position, rightFirePoint.rotation);
+            GameObject.Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
 
             coolDown = fireRate;
 

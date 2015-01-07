@@ -16,6 +16,7 @@ public class LaserProjectile : MonoBehaviour {
 		thisTransform = transform;
 	}
 	
+
 	// Update is called once per frame
 	void Update () 
 	{
