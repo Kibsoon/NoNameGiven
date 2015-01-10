@@ -118,8 +118,8 @@ public class PlayerControl : MonoBehaviour {
 		desiredTurnY = 0f;
 
 		// forward - engine power
-		desiredImpulseInput += (Input.GetKeyDown(KeyCode.LeftControl) ? 10: 0) * impulseSensitivity * Time.deltaTime; //left control speed up spaceship
-        desiredImpulseInput += (Input.GetKeyDown(KeyCode.LeftAlt) ? -10 : 0) * impulseSensitivity * Time.deltaTime; //left alt speed down spaceship
+		desiredImpulseInput += Input.GetAxis ("Thrust") * impulseSensitivity * Time.deltaTime; //left control speed up spaceship
+        //desiredImpulseInput += (Input.GetKeyDown(KeyCode.LeftAlt) ) * impulseSensitivity * Time.deltaTime; //left alt speed down spaceship
 		desiredImpulse = (Mathf.Clamp (desiredImpulseInput, GetImpulse2(), GetMaxImpulse2() ));
 		desiredImpulse += desiredImpulseInput;
 
