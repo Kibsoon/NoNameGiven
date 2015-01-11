@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Health : MonoBehaviour {
 
-	public float hitPoints = 100f;
+	public float hitPoints = 10f;
 	public float currentHitPoints;
 	public GameObject destroyFX;
 
@@ -31,7 +31,7 @@ public class Health : MonoBehaviour {
 	void Die()
 	{
 		//Debug.Log ("Enemy died");
-		if(gameObject.tag == "Enemy" || gameObject.tag == "Friend")
+        if (gameObject.tag == "Enemy" || gameObject.tag == "Friend" || gameObject.tag == "Player")
 		{
 			Instantiate(destroyFX, this.transform.position, this.transform.rotation);
 			Destroy (gameObject);

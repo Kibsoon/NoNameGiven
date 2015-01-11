@@ -26,7 +26,7 @@ public class LaserProjectile : MonoBehaviour {
 	void OnCollisionEnter (Collision collision)
 	{
 
-		if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Friend")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Friend" || collision.gameObject.tag == "Player")
 		{
 			collision.gameObject.SendMessageUpwards("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
 

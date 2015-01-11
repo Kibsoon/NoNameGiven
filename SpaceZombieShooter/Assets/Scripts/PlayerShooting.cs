@@ -3,11 +3,13 @@ using System.Collections;
 
 public class PlayerShooting : MonoBehaviour {
 
+    public EnemyControl enemyControl;
+
 	private float coolDown = 0f; // 
 	public float fireRate = 0f; // time between shooting
 
 	// checks to see if we're actually firing
-	public bool isFiring = false;
+	private bool isFiring = false;
 
 	// firing point transforms for launching projectiles
 	public Transform leftFirePoint;
@@ -27,7 +29,10 @@ public class PlayerShooting : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		CheckInput ();
+        if(this.gameObject.tag == "Player")
+            CheckInput ();
+        if (this.gameObject.tag == "Enemy")
+            isFiring = enemyControl.Shooting;
 
 		coolDown -= Time.deltaTime;
 

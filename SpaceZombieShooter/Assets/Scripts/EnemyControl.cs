@@ -1,20 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Assets.Scripts;
 
 public class EnemyControl : MonoBehaviour {
 
-    public GameObject Target;
-    public GameObject Player;
-    private float speed;
+    public float speed = 1.0f;
+    private GameObject target;
+    private GameObject player;
+    private GameObject camera;
     private Transform myTransform;
-    private EnemyShooting shooting;
+    private bool shooting;
+
+    public bool Shooting
+    {
+        get { return shooting; }
+    }
 
 	// Use this for initialization
 	void Start () 
     {
-        Target = GameObject.FindWithTag("Friend");
-        Player = GameObject.FindWithTag("Player");
+        target = GameObject.FindWithTag("Friend");
+        player = GameObject.FindWithTag("Player");
+        camera = GameObject.FindWithTag("MainCamera");
+        shooting = false;
         Awake();
 
 	}
@@ -23,21 +30,24 @@ public class EnemyControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        if (!Target || !Player)
+        if (!target || !player)
             return;
 
-        speed = 10f;
-        var targetDistance = Vector3.Distance(myTransform.position,Target.transform.position);
-        var playerDistance = Vector3.Distance(myTransform.position, Player.transform.position);
+      //  var speed = 1.0f;
+        var targetDistance = Vector3.Distance(myTransform.position,target.transform.position);
+        var playerDistance = Vector3.Distance(myTransform.position, player.transform.position);
 
         if(IsProperlyDistance(playerDistance))
         {
-            myTransform.position += (GetDelta(Player.transform) * speed * Time.deltaTime);
+            LookAt(player.transform);
+            shooting = true;
+            myTransform.position += (GetDelta(player.transform) * speed * Time.deltaTime);
             return;
         }
 
-        LookAt(Target.transform);
-        myTransform.position += (GetDelta(Target.transform) * speed * Time.deltaTime);
+        LookAt(target.transform);
+        shooting = false;
+        myTransform.position += (GetDelta(target.transform) * speed * Time.deltaTime);
 	}
 
     void Awake()
@@ -61,8 +71,9 @@ public class EnemyControl : MonoBehaviour {
 
     Vector3 LookAt(Transform transform)
     {
-      //  var damping = 6.0;
-        var rotation = Quaternion.LookRotation(transform.position - myTransform.position);
+        //var distance = 600.0f;
+        var vector = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        var rotation = Quaternion.FromToRotation(transform.position, myTransform.position);
         myTransform.rotation = Quaternion.Slerp(myTransform.rotation, rotation, Time.deltaTime);
         return myTransform.position;
     }

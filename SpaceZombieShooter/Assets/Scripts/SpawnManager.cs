@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SpawnManager : MonoBehaviour {
 
-	public int timeToRespawn = 5;
+	public int timeToRespawn = 10;
 	public int spawnPositionRange1 = 20;
 	public int spawnPositionRange2 = 30;
 	public GameObject enemy1;
@@ -31,17 +31,17 @@ public class SpawnManager : MonoBehaviour {
 
 
 			// random position in (-spawnPositionRange2, -spawnPositionRange1) U (spawnPositionRange1, spawnPositionRange2)
-			if(Random.Range (0, 100) < 50)
+			if(Random.Range (0, 200) < 100)
 				spawnPosition.x = Random.Range (spawnPositionRange1, spawnPositionRange2);
 			else
 				spawnPosition.x = Random.Range (-spawnPositionRange2, -spawnPositionRange1);
 
-			if(Random.Range (0, 100) < 50)
+			if(Random.Range (0, 200) < 100)
 				spawnPosition.y = Random.Range (spawnPositionRange1, spawnPositionRange2);
 			else 
 				spawnPosition.y = Random.Range (-spawnPositionRange2, -spawnPositionRange1);
 
-			if(Random.Range (0, 100) < 50)
+            if (Random.Range(0, 200) < 100)
 				spawnPosition.z = Random.Range (spawnPositionRange1, spawnPositionRange2);
 			else
 				spawnPosition.z = Random.Range (-spawnPositionRange2, -spawnPositionRange1);
