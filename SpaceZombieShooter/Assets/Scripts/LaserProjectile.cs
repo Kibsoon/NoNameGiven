@@ -10,10 +10,14 @@ public class LaserProjectile : MonoBehaviour {
 	public Transform laserHitFXPrefab;
 
 
+
 	// Use this for initialization
 	void Start () 
 	{
 		thisTransform = transform;
+
+		//if ((gameObject == GameObject.FindWithTag ("LaserEnemy")))
+						
 	}
 	
 
@@ -23,10 +27,15 @@ public class LaserProjectile : MonoBehaviour {
 		thisTransform.position += Time.deltaTime * speed * thisTransform.forward;
 	}
 
+
 	void OnCollisionEnter (Collision collision)
 	{
 
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Friend" || collision.gameObject.tag == "Player")
+		//GameObject.FindWithTag("Laser")
+
+
+
+		if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Friend" || collision.gameObject.tag == "Player")
 		{
 			collision.gameObject.SendMessageUpwards("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
 
@@ -37,6 +46,9 @@ public class LaserProjectile : MonoBehaviour {
 			Instantiate (laserHitFXPrefab, pos, rot);
 			Destroy(gameObject);
 		}
+
+
+
 
 
 	}

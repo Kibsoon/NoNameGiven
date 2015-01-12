@@ -40,7 +40,7 @@ public class TowerShooting : MonoBehaviour {
         
         if (isFiring)
         {
-            Debug.Log("shoot to enemy");
+            //Debug.Log("shoot to enemy");
             myTransform.LookAt(enemy.transform);
             Fire();
         }
