@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SpawnManager : MonoBehaviour {
 
-	public int timeToRespawn = 10;
+	public float timeToRespawn = 10f;
 	public int spawnPositionRange1 = 20;
 	public int spawnPositionRange2 = 30;
 	public GameObject enemy1;

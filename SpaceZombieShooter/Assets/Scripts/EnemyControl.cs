@@ -55,7 +55,11 @@ public class EnemyControl : MonoBehaviour {
 
 
 		if (objectIsTooClose (myTransform, target.transform))
+		{
+			shooting = true;
 			return;
+		}
+
 
         LookAt(target.transform);
         shooting = false;
