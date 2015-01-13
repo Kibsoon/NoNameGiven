@@ -36,6 +36,7 @@ public class TowerShooting : MonoBehaviour {
     void Start()
     {
         isFiring = false;
+
     }
 
     // Update is called once per frame
@@ -64,7 +65,7 @@ public class TowerShooting : MonoBehaviour {
 
 		if(staticDimension == 1)
 		{
-			turretVector.x = myTransform.position.x;
+			turretVector.x = 0f;
 			turretVector.y = enemy.transform.position.y - myTransform.position.y;
 			turretVector.z = enemy.transform.position.z - myTransform.position.z;
 		}
@@ -72,7 +73,7 @@ public class TowerShooting : MonoBehaviour {
 		if(staticDimension == 2)
 		{
 			turretVector.x = enemy.transform.position.x - myTransform.position.x;
-			turretVector.y = myTransform.position.y;
+			turretVector.y = 0f;
 			turretVector.z = enemy.transform.position.z - myTransform.position.z;
 		}
 
@@ -80,7 +81,7 @@ public class TowerShooting : MonoBehaviour {
 		{
 			turretVector.x = enemy.transform.position.x - myTransform.position.x;
 			turretVector.y = enemy.transform.position.y - myTransform.position.y;
-			turretVector.z =  myTransform.position.z;
+			turretVector.z = 0f;
 		}
 
 
@@ -114,9 +115,9 @@ public class TowerShooting : MonoBehaviour {
 
 		myTransform.position += (turretVector * speed * Time.deltaTime);
 
-
     }
 	
+
 
     void Awake()
     {
