@@ -33,6 +33,9 @@ public class PlayerControl : MonoBehaviour {
 	public GUIText enginePercentageText;
 	public GUIText hpGUI;
 
+	public Transform destroyObjectFX;
+
+
 
 	public Vector3 Velocity
 	{
@@ -202,7 +205,35 @@ public class PlayerControl : MonoBehaviour {
 	}
 
 
+	void OnCollisionEnter (Collision collision)
+	{
+		if (collision.gameObject.tag == "Friend" )
+		{
+			ContactPoint contact = collision.contacts[0]; 	// point of collision
+			Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+			Vector3 pos = contact.point;
+			Instantiate (destroyObjectFX, pos, rot);
+			Destroy(gameObject);
+		}
 
+		if (collision.gameObject.tag == "Enemy" )
+		{
+			collision.gameObject.SendMessageUpwards("TakeDamage", 999, SendMessageOptions.DontRequireReceiver);
+
+			gameObject.SendMessageUpwards("TakeDamage", 300, SendMessageOptions.DontRequireReceiver);
+
+		}
+		/*
+		if (collision.gameObject.tag == "SimpleTower" )
+		{
+			collision.gameObject.SendMessageUpwards("TakeDamage", 999, SendMessageOptions.DontRequireReceiver);
+			
+			gameObject.SendMessageUpwards("TakeDamage", 300, SendMessageOptions.DontRequireReceiver);
+			
+		}
+		*/
+
+	}
 
 
 
