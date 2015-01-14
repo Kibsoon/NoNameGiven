@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\EnemyControl.cs" />
      <Compile Include="Assets\Scripts\Health.cs" />
      <Compile Include="Assets\Scripts\LaserProjectile.cs" />
+     <Compile Include="Assets\Scripts\MaterialChange.cs" />
      <Compile Include="Assets\Scripts\OnCollisionDestroy.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\PlayerShooting.cs" />
