@@ -31,6 +31,7 @@ public class PlayerControl : MonoBehaviour {
 	private Transform thisTransform;
 	public float enginePowerValue = 0f;
 	public GUIText enginePercentageText;
+	public GUIText hpGUI;
 
 
 	public Vector3 Velocity
@@ -82,10 +83,26 @@ public class PlayerControl : MonoBehaviour {
 		}
 	}
 
+	void showCurrentHitPoints()
+	{
+		if (hpGUI != null) 
+		{
+
+			GameObject Player = GameObject.Find ("Player");
+			Health hp = Player.GetComponent<Health> ();
+
+			hpGUI.text = "Player HP: " + hp.currentHitPoints.ToString ();
+			//ToString( hp.currentHitPoints);
+
+		}
+	}
+
 
 	// Update is called once per frame
 	void Update () 
 	{
+		showCurrentHitPoints ();
+
 		OnEnginePowerChange();
 		AdjustEngineFX();
 		CheckInput();

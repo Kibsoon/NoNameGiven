@@ -40,5 +40,10 @@ public class Health : MonoBehaviour {
 	}
 
 
+	float getCurrentHitPoints ()
+	{
+		return currentHitPoints;
+	}
+
 
 }
