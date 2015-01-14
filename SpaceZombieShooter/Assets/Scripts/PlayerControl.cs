@@ -67,7 +67,14 @@ public class PlayerControl : MonoBehaviour {
 		{
 			enginePowerValue = (desiredImpulse / maxImpulse.z * 100) / 100f; // calculate percentage
 
-			enginePercentageText.text = "Engines " + (enginePowerValue * 100).ToString("f0") + "%";
+
+			if(enginePowerValue <= 0) 
+				enginePercentageText.text = "Engines 0%";
+			else if(enginePowerValue >= 1)
+				enginePercentageText.text = "Engines 100%";
+			else
+				enginePercentageText.text = "Engines " + (enginePowerValue * 100).ToString("f0") + "%";
+				
 		}
 	}
 
@@ -92,7 +99,6 @@ public class PlayerControl : MonoBehaviour {
 			Health hp = Player.GetComponent<Health> ();
 
 			hpGUI.text = "Player HP: " + hp.currentHitPoints.ToString ();
-			//ToString( hp.currentHitPoints);
 
 		}
 	}

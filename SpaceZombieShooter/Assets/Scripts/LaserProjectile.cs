@@ -16,7 +16,8 @@ public class LaserProjectile : MonoBehaviour {
 	{
 		thisTransform = transform;
 
-		//if ((gameObject == GameObject.FindWithTag ("LaserEnemy")))
+
+
 						
 	}
 	

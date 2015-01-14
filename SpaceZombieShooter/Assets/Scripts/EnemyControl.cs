@@ -43,10 +43,12 @@ public class EnemyControl : MonoBehaviour {
 
         if(IsProperlyDistance(playerDistance))
         {
+			myTransform.LookAt(player.transform);
+
 			if (objectIsTooClose (myTransform, player.transform))
 				return;
 
-			LookAt(player.transform);
+
             shooting = true;
             myTransform.position += (GetDelta(player.transform) * speed * Time.deltaTime);
             return;
