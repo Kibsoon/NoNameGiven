@@ -8,11 +8,17 @@ public class EnemyControl : MonoBehaviour {
 	public int distanceToObject = 5;
 	public float rotationSpeed = 0.5f;
 
+	public int chanceToEnter = 80;
+	private int randomValueChanceToEnter;
+
     private GameObject target;
     private GameObject player;
     private GameObject camera;
     private Transform myTransform;
     private bool shooting;
+
+	//public Transform destroyObjectFX;
+
 
     public bool Shooting
     {
@@ -28,6 +34,7 @@ public class EnemyControl : MonoBehaviour {
         shooting = false;
         Awake();
 
+		randomValueChanceToEnter = Random.Range (0, 100);
 	}
 	
 
@@ -56,11 +63,17 @@ public class EnemyControl : MonoBehaviour {
 
 
 
-		if (objectIsTooClose (myTransform, target.transform))
+		if(randomValueChanceToEnter > chanceToEnter)
 		{
-			shooting = true;
-			return;
+			if (objectIsTooClose (myTransform, target.transform))
+			{
+				shooting = true;
+				return;
+			}
 		}
+
+
+
 
 
         LookAt(target.transform);
@@ -108,7 +121,20 @@ public class EnemyControl : MonoBehaviour {
 	}
 
 
+	void OnCollisionEnter (Collision collision)
+	{
+		if (collision.gameObject.tag == "Friend" )
+		{
+			//ContactPoint contact = collision.contacts[0]; 	// point of collision
+			//Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+			//Vector3 pos = contact.point;
+			//Instantiate (destroyObjectFX, pos, rot);
+			Destroy(gameObject);
 
+			GameObject.Find ("SpaceBase").SendMessage("addZombiesInBase", SendMessageOptions.DontRequireReceiver);
+
+		}
+	}
 
 
 

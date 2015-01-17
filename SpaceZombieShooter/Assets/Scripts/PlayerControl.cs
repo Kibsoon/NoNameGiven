@@ -214,6 +214,9 @@ public class PlayerControl : MonoBehaviour {
 			Vector3 pos = contact.point;
 			Instantiate (destroyObjectFX, pos, rot);
 			Destroy(gameObject);
+
+
+			Application.LoadLevel("MainMenuScene");
 		}
 
 		if (collision.gameObject.tag == "Enemy" )

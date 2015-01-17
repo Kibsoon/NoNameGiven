@@ -14,6 +14,8 @@ public class Health : MonoBehaviour {
 	void Start () 
 	{
 		currentHitPoints = hitPoints;
+
+
 	}
 
 
@@ -30,11 +32,23 @@ public class Health : MonoBehaviour {
 
 	void Die()
 	{
-		//Debug.Log ("Enemy died");
+
         if (gameObject.tag == "Enemy" || gameObject.tag == "Friend" || gameObject.tag == "Player")
 		{
 			Instantiate(destroyFX, this.transform.position, this.transform.rotation);
 			Destroy (gameObject);
+
+			if(gameObject.tag == "Friend" || gameObject.tag == "Player")
+			{
+				Application.LoadLevel("MainMenuScene");
+			}
+
+			if(gameObject.tag == "Enemy")
+			{
+				GameObject.Find ("GameObjectForScripts").SendMessage("addPoints", gameObject.name, SendMessageOptions.DontRequireReceiver);
+			}
+
+
 		}
 
 	}
