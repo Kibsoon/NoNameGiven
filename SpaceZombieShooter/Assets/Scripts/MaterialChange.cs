@@ -8,6 +8,9 @@ public class MaterialChange : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		if(!texture)
+			renderer.material.mainTexture = null;
+
 		renderer.material.mainTexture = texture;
 	}
 	

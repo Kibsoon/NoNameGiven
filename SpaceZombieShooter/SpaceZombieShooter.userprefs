@@ -1,16 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BaseControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerShooting.cs">
     <Files>
-      <File FileName="Assets\Scripts\BaseControl.cs" Line="93" Column="63" />
-      <File FileName="Assets\Scripts\PlayerControl.cs" Line="36" Column="35" />
-      <File FileName="Assets\Scripts\Health.cs" Line="48" Column="125" />
+      <File FileName="Assets\Scripts\PlayerControl.cs" Line="154" Column="1" />
+      <File FileName="Assets\Scripts\BaseControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Health.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\TowerShooting.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyControl.cs" Line="66" Column="7" />
+      <File FileName="Assets\Scripts\EnemyControl.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\LaserProjectile.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerShooting.cs" Line="54" Column="4" />
-      <File FileName="Assets\Scripts\SpawnManager.cs" Line="34" Column="34" />
-      <File FileName="Assets\Scripts\PointsManager.cs" Line="23" Column="80" />
+      <File FileName="Assets\Scripts\PlayerShooting.cs" Line="82" Column="1" />
+      <File FileName="Assets\Scripts\SpawnManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CameraScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

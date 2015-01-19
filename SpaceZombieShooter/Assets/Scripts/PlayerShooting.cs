@@ -48,7 +48,7 @@ public class PlayerShooting : MonoBehaviour {
 
 	void CheckInput()
 	{
-		if (Input.GetKeyDown ("space")) 
+		if (Input.GetKeyDown ("space") || Input.GetKeyDown(KeyCode.Mouse0)) 
 		{
 			isFiring = true;
 		}

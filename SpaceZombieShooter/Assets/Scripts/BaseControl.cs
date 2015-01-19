@@ -14,6 +14,11 @@ public class BaseControl : MonoBehaviour {
 	private GameObject player;
 	public int distanceToPlayer = 30;
 
+	public int tooFaraway = 150;
+	public int tooFarawayWarning = 100;
+	public GUIText tooFarawayWarningGUI;
+
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -71,6 +76,8 @@ public class BaseControl : MonoBehaviour {
 	}
 
 
+
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -104,6 +111,15 @@ public class BaseControl : MonoBehaviour {
 			ZombieWarningGUI.text = "Uwaga, zombie w bazie!";
 		else ZombieWarningGUI.text = " ";
 
+
+
+
+		if (!(playerDistance <= tooFarawayWarning))
+						tooFarawayWarningGUI.text = "Jesteś za daleko, cofnij się";
+		else 
+			tooFarawayWarningGUI.text = " ";
+		if(!(playerDistance <= tooFaraway))
+			Application.LoadLevel("MainMenuScene");
 
 	}
 }
