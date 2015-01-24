@@ -57,10 +57,6 @@ public class TowerShooting : MonoBehaviour {
             Fire();
         }
 
-
-
-
-
 		// moving on wall
 
 		if(staticDimension == 1)
@@ -111,8 +107,6 @@ public class TowerShooting : MonoBehaviour {
 
 		}
 
-
-
 		myTransform.position += (turretVector * speed * Time.deltaTime);
 
     }
@@ -158,6 +152,7 @@ public class TowerShooting : MonoBehaviour {
         GameObject.Instantiate(laserPrefab, FirePoint.position, FirePoint.rotation);
 
         coolDown = fireRate;
+
 
     }
 }

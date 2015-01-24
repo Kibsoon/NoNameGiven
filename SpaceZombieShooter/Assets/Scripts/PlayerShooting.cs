@@ -20,6 +20,9 @@ public class PlayerShooting : MonoBehaviour {
 
 	public AudioSource fireFXSound;
 
+   
+    public Transform PlayerTransform;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -30,9 +33,13 @@ public class PlayerShooting : MonoBehaviour {
 	void Update () 
 	{
         if(this.gameObject.tag == "Player")
-            CheckInput ();
+            CheckInput();
         if (this.gameObject.tag == "Enemy")
+        {
             isFiring = enemyControl.Shooting;
+            
+        }
+            
 
 		coolDown -= Time.deltaTime;
 
@@ -41,6 +48,7 @@ public class PlayerShooting : MonoBehaviour {
 			// player has initiated shooting laser
 			Fire();
 		}
+
 
 
 	}

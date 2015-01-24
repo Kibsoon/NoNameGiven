@@ -29,7 +29,12 @@ public class PlayerControl : MonoBehaviour {
 
 
 	private Transform thisTransform;
-	public float enginePowerValue = 0f;
+    private float enginePowerValue = 0f;
+
+    public float EnginePowerValue
+    {
+        get { return enginePowerValue; }
+    }
 	public GUIText enginePercentageText;
 	public GUIText hpGUI;
 
@@ -237,9 +242,6 @@ public class PlayerControl : MonoBehaviour {
 		*/
 
 	}
-
-
-
 
 }
 

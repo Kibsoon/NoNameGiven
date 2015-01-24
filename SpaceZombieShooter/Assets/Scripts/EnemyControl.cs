@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyControl : MonoBehaviour {
 
     public float speed = 1.0f;
-	public int properlyDistanceBetweenEnemyAndPalyer = 30;
+	public float properlyDistanceBetweenEnemyAndPalyer = 200.0f;
 	public int distanceToObject = 5;
 	public float rotationSpeed = 0.5f;
 
@@ -15,6 +15,7 @@ public class EnemyControl : MonoBehaviour {
     private GameObject player;
     private GameObject camera;
     private Transform myTransform;
+    private PlayerControl playerControl;
     private bool shooting;
 
 	//public Transform destroyObjectFX;
@@ -29,8 +30,9 @@ public class EnemyControl : MonoBehaviour {
 	void Start () 
     {
         target = GameObject.FindWithTag("Friend");
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.Find("Player");
         camera = GameObject.FindWithTag("MainCamera");
+        playerControl = player.GetComponent<PlayerControl>();
         shooting = false;
         Awake();
 
@@ -50,13 +52,19 @@ public class EnemyControl : MonoBehaviour {
 
         if(IsProperlyDistance(playerDistance))
         {
-			myTransform.LookAt(player.transform);
+            if(playerControl.EnginePowerValue <= 0)
+                myTransform.LookAt(player.transform);
+            else
+            {
+                var temp = new Vector3(3.0f, 0.0f, 0.0f);
+                myTransform.LookAt(player.transform,temp);
+            }
+            shooting = true;
 
-			if (objectIsTooClose (myTransform, player.transform))
+
+			if (objectIsTooClose(myTransform, player.transform))
 				return;
 
-
-            shooting = true;
             myTransform.position += (GetDelta(player.transform) * speed * Time.deltaTime);
             return;
         }
@@ -71,10 +79,6 @@ public class EnemyControl : MonoBehaviour {
 				return;
 			}
 		}
-
-
-
-
 
         LookAt(target.transform);
         shooting = false;
@@ -96,6 +100,7 @@ public class EnemyControl : MonoBehaviour {
     Vector3 GetDelta(Transform transform)
     {
         return transform.position - myTransform.position;
+
     }
 
     Vector3 LookAt(Transform transform)

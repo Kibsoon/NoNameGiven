@@ -14,6 +14,7 @@ public class OnCollisionDestroy : MonoBehaviour {
 
 	}
 	
+
 	
 	void OnCollisionEnter (Collision collision)
 	{
