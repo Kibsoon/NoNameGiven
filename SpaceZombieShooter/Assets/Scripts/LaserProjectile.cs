@@ -6,6 +6,7 @@ public class LaserProjectile : MonoBehaviour {
 
 	public float speed = 2f; // speed of laser
 	public int damage = 25; // laser damage to other objects
+	private float playerDamage;
 	private Transform thisTransform; // cached transform for this projectile
 	public Transform laserHitFXPrefab;
 
@@ -17,7 +18,7 @@ public class LaserProjectile : MonoBehaviour {
 		thisTransform = transform;
 
 
-
+		playerDamage = damage;
 						
 	}
 	
@@ -28,15 +29,34 @@ public class LaserProjectile : MonoBehaviour {
 		thisTransform.position += Time.deltaTime * speed * thisTransform.forward;
 	}
 
+	void playerAttackUp()
+	{
+		playerDamage += playerDamage * 0.1f;
+	}
+
+
 
 	void OnCollisionEnter (Collision collision)
 	{
 
-		//GameObject.FindWithTag("Laser")
+		if(gameObject.name == "Laser(Clone)")
+		{
+			if (collision.gameObject.tag == "Enemy")
+			{
+				collision.gameObject.SendMessageUpwards("TakeDamage", playerDamage, SendMessageOptions.DontRequireReceiver);
+				
+				// destroy laser on collision
+				ContactPoint contact = collision.contacts[0]; 	// point of collision
+				Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+				Vector3 pos = contact.point;
+				Instantiate (laserHitFXPrefab, pos, rot);
+				Destroy(gameObject);
+			}
+		}
 
 
 
-		if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Friend" || collision.gameObject.tag == "Player")
+		if (collision.gameObject.tag == "Friend" || collision.gameObject.tag == "Player")
 		{
 			collision.gameObject.SendMessageUpwards("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
 

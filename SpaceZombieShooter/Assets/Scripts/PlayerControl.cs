@@ -8,6 +8,8 @@ public class PlayerControl : MonoBehaviour {
 	public Vector3 velocity = new Vector3(0,0,0);
 	public float impulseSensitivity = 500f;
 	public float turnSensitivity = 5000f; //12000f
+	public float turnSensitivityMouse = 300f;
+	public float sensitivityInCorner = 30f;
 
 	public ParticleSystem leftExhaustFX;
 	public ParticleSystem rightExhaustFX;
@@ -30,6 +32,8 @@ public class PlayerControl : MonoBehaviour {
 
 	private Transform thisTransform;
     private float enginePowerValue = 0f;
+
+	private bool stopPlayer = false;
 
     public float EnginePowerValue
     {
@@ -66,6 +70,9 @@ public class PlayerControl : MonoBehaviour {
 	void Start () 
 	{
 		thisTransform = transform;
+
+
+
 	}
 
 
@@ -106,7 +113,7 @@ public class PlayerControl : MonoBehaviour {
 			GameObject Player = GameObject.Find ("Player");
 			Health hp = Player.GetComponent<Health> ();
 
-			hpGUI.text = "Player HP: " + hp.currentHitPoints.ToString ();
+			hpGUI.text = "Player HP: " + hp.currentHitPoints.ToString () + "/" + hp.hitPoints.ToString ();
 
 		}
 	}
@@ -115,8 +122,15 @@ public class PlayerControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+
+
+
 		showCurrentHitPoints ();
 
+
+		if (stopPlayer)
+			return;
+		
 		OnEnginePowerChange();
 		AdjustEngineFX();
 		CheckInput();
@@ -154,6 +168,8 @@ public class PlayerControl : MonoBehaviour {
 		desiredImpulse = (Mathf.Clamp (desiredImpulseInput, GetImpulse2(), GetMaxImpulse2() ));
 		desiredImpulse += desiredImpulseInput;
 
+
+		// KEYBOARD
 		// up and down
 		desiredTurnXInput += Input.GetAxis ("Vertical") * turnSensitivity * Time.deltaTime;
 		desiredTurnX = (Mathf.Clamp (desiredTurnXInput, -GetMaxTurnRate(), GetMaxTurnRate() ));
@@ -163,6 +179,36 @@ public class PlayerControl : MonoBehaviour {
 		desiredTurnYInput += Input.GetAxis ("Horizontal") * turnSensitivity * Time.deltaTime;
 		desiredTurnY = (Mathf.Clamp (desiredTurnYInput, -GetMaxTurnRate(), GetMaxTurnRate() ));
 		desiredTurnY += desiredTurnYInput;
+
+
+
+
+
+
+		//MOUSE
+		// up and down
+		desiredTurnXInput += Input.GetAxis ("VerticalMouse") * turnSensitivityMouse * Time.deltaTime;
+		desiredTurnX = (Mathf.Clamp (desiredTurnXInput, -GetMaxTurnRate(), GetMaxTurnRate() ));
+		desiredTurnX += desiredTurnXInput;
+		
+		// left and right
+		desiredTurnYInput += Input.GetAxis ("HorizontalMouse") * turnSensitivityMouse * Time.deltaTime;
+		desiredTurnY = (Mathf.Clamp (desiredTurnYInput, -GetMaxTurnRate(), GetMaxTurnRate() ));
+		desiredTurnY += desiredTurnYInput;
+
+		// mouse in corner
+		if(Input.mousePosition.x <=100)
+			desiredTurnY -= sensitivityInCorner;
+		if(Input.mousePosition.x >= Screen.width -  100)
+			desiredTurnY += sensitivityInCorner;
+
+		if(Input.mousePosition.y <=50)
+			desiredTurnX += sensitivityInCorner + 20f;
+		if(Input.mousePosition.y >=Screen.height - 50)
+			desiredTurnX -= sensitivityInCorner + 20f;
+
+
+
 
 		SetImpulse2 (desiredImpulse); // forward
 		SetTurnRate (desiredTurnX, desiredTurnY, 0);
@@ -221,7 +267,7 @@ public class PlayerControl : MonoBehaviour {
 			Destroy(gameObject);
 
 
-			Application.LoadLevel("MainMenuScene");
+			Application.LoadLevel("GameOver");
 		}
 
 		if (collision.gameObject.tag == "Enemy" )
@@ -229,6 +275,8 @@ public class PlayerControl : MonoBehaviour {
 			collision.gameObject.SendMessageUpwards("TakeDamage", 999, SendMessageOptions.DontRequireReceiver);
 
 			gameObject.SendMessageUpwards("TakeDamage", 300, SendMessageOptions.DontRequireReceiver);
+
+
 
 		}
 		/*
@@ -241,6 +289,17 @@ public class PlayerControl : MonoBehaviour {
 		}
 		*/
 
+	}
+
+	void stopEngines()
+	{
+		//enginePowerValue = 0f;
+		stopPlayer = true;
+	}
+
+	void startEngines()
+	{
+		stopPlayer = false;
 	}
 
 }

@@ -9,16 +9,20 @@ public class SpawnManager : MonoBehaviour {
 	public GameObject enemy1;
 	public GameObject enemy2;
 	public GameObject enemy3;
+	public GameObject boss;
 
-	private GameObject[] enemyTab = new GameObject[3];
+	private GameObject[] enemyTab = new GameObject[4];
 	private Vector3 spawnPosition = new Vector3(0,0,0);
 
 	// Use this for initialization
 	void Start () 
 	{
+		Screen.showCursor = false; 
+
 		enemyTab[0] = enemy1;
 		enemyTab[1] = enemy2;
 		enemyTab[2] = enemy3;
+		enemyTab[3] = boss;
 
 		StartCoroutine (EnemySpawn() );
 	}
@@ -27,7 +31,7 @@ public class SpawnManager : MonoBehaviour {
 	{
 		while(true)
 		{
-			var enemyNumber = Random.Range (0, 3); 	// which enemy
+			var enemyNumber = Random.Range (0, 4); 	// which enemy
 
 
 			// random position in (-spawnPositionRange2, -spawnPositionRange1) U (spawnPositionRange1, spawnPositionRange2)

@@ -1,0 +1,55 @@
+Initialize engine version: 4.5.4p3 (0b4db23ffd73)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GT 555M  (ID=0xdeb)
+    Vendor:   NVIDIA
+    VRAM:     971 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\damia_000\Desktop\GameRepo\SpaceZombieShooter\gameTestBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\damia_000\Desktop\GameRepo\SpaceZombieShooter\gameTestBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\damia_000\Desktop\GameRepo\SpaceZombieShooter\gameTestBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\damia_000\Desktop\GameRepo\SpaceZombieShooter\gameTestBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\damia_000\Desktop\GameRepo\SpaceZombieShooter\gameTestBuild_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\damia_000\Desktop\GameRepo\SpaceZombieShooter\gameTestBuild_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+- Completed reload, in  0.192 seconds
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+UnloadTime: 1.937424 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 405.
+Total: 2.389475 ms (FindLiveObjects: 0.068110 ms CreateObjectMapping: 0.033588 ms MarkObjects: 0.327958 ms  DeleteObjects: 0.168410 ms)
+
+Platform assembly: C:\Users\damia_000\Desktop\GameRepo\SpaceZombieShooter\gameTestBuild_Data\Managed\Boo.Lang.dll (this message is harmless)
+UnloadTime: 6.900647 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 164 unused Assets to reduce memory usage. Loaded Objects now: 132.
+Total: 3.315501 ms (FindLiveObjects: 0.034988 ms CreateObjectMapping: 0.036387 ms MarkObjects: 0.325158 ms  DeleteObjects: 1.267979 ms)
+
+UnloadTime: 0.953550 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 380.
+Total: 3.535695 ms (FindLiveObjects: 0.068110 ms CreateObjectMapping: 0.045251 ms MarkObjects: 0.498234 ms  DeleteObjects: 0.030323 ms)
+
+UnloadTime: 1.845988 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 412.
+Total: 2.385276 ms (FindLiveObjects: 0.050383 ms CreateObjectMapping: 0.036854 ms MarkObjects: 0.480507 ms  DeleteObjects: 0.168877 ms)
+
+UnloadTime: 2.765950 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 152 unused Assets to reduce memory usage. Loaded Objects now: 132.
+Total: 3.077113 ms (FindLiveObjects: 0.032655 ms CreateObjectMapping: 0.030789 ms MarkObjects: 0.292503 ms  DeleteObjects: 1.114497 ms)
+
+UnloadTime: 0.698368 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 380.
+Total: 2.103969 ms (FindLiveObjects: 0.052249 ms CreateObjectMapping: 0.029390 ms MarkObjects: 0.375075 ms  DeleteObjects: 0.021926 ms)
+

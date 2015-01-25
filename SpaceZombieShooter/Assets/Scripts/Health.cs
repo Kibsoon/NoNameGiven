@@ -40,7 +40,7 @@ public class Health : MonoBehaviour {
 
 			if(gameObject.tag == "Friend" || gameObject.tag == "Player")
 			{
-				Application.LoadLevel("MainMenuScene");
+				Application.LoadLevel("GameOver");
 			}
 
 			if(gameObject.tag == "Enemy")
@@ -57,6 +57,13 @@ public class Health : MonoBehaviour {
 	float getCurrentHitPoints ()
 	{
 		return currentHitPoints;
+	}
+
+
+	void playerHPUp()
+	{
+		hitPoints += hitPoints * 0.1f;
+		currentHitPoints = hitPoints;
 	}
 
 

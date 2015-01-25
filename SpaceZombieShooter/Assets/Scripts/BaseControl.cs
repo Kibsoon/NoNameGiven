@@ -23,6 +23,7 @@ public class BaseControl : MonoBehaviour {
 	void Start () 
 	{
 		zombiesNr = 0;
+		ZombiesInBaseGUI.text = "Zombies: " + zombiesNr + "/" + zombiesToEnd;
 
 		player = GameObject.FindWithTag("Player");
 		myTransform = transform;
@@ -33,7 +34,7 @@ public class BaseControl : MonoBehaviour {
 		if (ZombiesInBaseGUI != null || ZombieWarningGUI != null) 
 		{
 			zombiesNr++;
-			ZombiesInBaseGUI.text = "Zombies: " + zombiesNr;
+			ZombiesInBaseGUI.text = "Zombies: " + zombiesNr + "/" + zombiesToEnd;
 
 			if(zombiesNr >= zombiesToEndWarning)
 			{
@@ -44,7 +45,7 @@ public class BaseControl : MonoBehaviour {
 
 			if(zombiesNr >= zombiesToEnd)
 			{
-				Application.LoadLevel("MainMenuScene");
+				Application.LoadLevel("GameOver");
 			}
 			
 		}
@@ -59,7 +60,7 @@ public class BaseControl : MonoBehaviour {
 			GameObject SpaceBase = GameObject.Find ("SpaceBase");
 			Health hp = SpaceBase.GetComponent<Health> ();
 			
-			hpGUI.text = "SpaceBase HP: " + hp.currentHitPoints.ToString ();
+			hpGUI.text = "SpaceBase HP: " + hp.currentHitPoints.ToString () + "/" + hp.hitPoints.ToString ();
 			//ToString( hp.currentHitPoints);
 			
 		}
@@ -101,7 +102,10 @@ public class BaseControl : MonoBehaviour {
 
 				if (Input.GetKeyDown ("f")) 
 				{
-					Application.LoadLevel("MainMenuScene");
+					if(Random.Range (0, 200) < 100)
+						Application.LoadLevel("2DShooter 1");
+					else
+						Application.LoadLevel("2DShooter 2");
 				}
 
 			}
@@ -119,7 +123,7 @@ public class BaseControl : MonoBehaviour {
 		else 
 			tooFarawayWarningGUI.text = " ";
 		if(!(playerDistance <= tooFaraway))
-			Application.LoadLevel("MainMenuScene");
+			Application.LoadLevel("GameOver");
 
 	}
 }

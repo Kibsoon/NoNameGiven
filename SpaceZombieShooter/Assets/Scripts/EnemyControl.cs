@@ -139,6 +139,16 @@ public class EnemyControl : MonoBehaviour {
 			GameObject.Find ("SpaceBase").SendMessage("addZombiesInBase", SendMessageOptions.DontRequireReceiver);
 
 		}
+
+		if (collision.gameObject.tag == "Player" )
+		{
+			Destroy(gameObject);
+			
+			GameObject.Find ("Player").SendMessage("addZombiesInPlayer", SendMessageOptions.DontRequireReceiver);
+			
+		}
+
+
 	}
 
 
