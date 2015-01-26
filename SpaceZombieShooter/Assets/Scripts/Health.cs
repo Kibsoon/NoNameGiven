@@ -7,6 +7,8 @@ public class Health : MonoBehaviour {
 	public float hitPoints = 10f;
 	public float currentHitPoints;
 	public GameObject destroyFX;
+    public GameObject explosion;
+
 
 
 
@@ -36,6 +38,7 @@ public class Health : MonoBehaviour {
         if (gameObject.tag == "Enemy" || gameObject.tag == "Friend" || gameObject.tag == "Player")
 		{
 			Instantiate(destroyFX, this.transform.position, this.transform.rotation);
+            Instantiate(explosion, this.transform.position, this.transform.rotation);
 			Destroy (gameObject);
 
 			if(gameObject.tag == "Friend" || gameObject.tag == "Player")
