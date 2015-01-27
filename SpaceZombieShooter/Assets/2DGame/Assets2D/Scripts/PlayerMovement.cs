@@ -6,10 +6,12 @@ public class PlayerMovement : MonoBehaviour {
 	public float maxSpeed = 5f;
 	public float rotSpeed = 180f;
 	float shipBoundaryRadius = 0.5f;
+    protected Animator animator;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+	    animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -23,6 +25,14 @@ public class PlayerMovement : MonoBehaviour {
 		Vector3 pos = transform.position;
 		Vector3 velocity = new Vector3(0, Input.GetAxis("Vertical2D") * maxSpeed * Time.deltaTime,0);
 		pos += rot * velocity;
+        if (!Input.GetAxis("Horizontal2D").Equals(0) || !Input.GetAxis("Vertical2D").Equals(0))
+	    {
+            animator.SetBool("Walking", true);
+	    }
+        else
+        {
+            animator.SetBool("Walking", false);
+        }
 		/*if (pos.y + shipBoundaryRadius > Camera.main.orthographicSize) {
 			pos.y = Camera.main.orthographicSize - shipBoundaryRadius;
 		}

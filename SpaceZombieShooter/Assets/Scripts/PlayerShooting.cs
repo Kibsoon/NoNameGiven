@@ -23,6 +23,9 @@ public class PlayerShooting : MonoBehaviour {
    
     public Transform PlayerTransform;
 
+	private bool stopPlayer = false;
+
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -32,7 +35,11 @@ public class PlayerShooting : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-        if(this.gameObject.tag == "Player")
+		if (stopPlayer)
+			return;
+
+
+		if(this.gameObject.tag == "Player")
             CheckInput();
         if (this.gameObject.tag == "Enemy")
         {
@@ -82,6 +89,18 @@ public class PlayerShooting : MonoBehaviour {
 
 		coolDown = fireRate;
 
+	}
+
+
+	void stopEngines()
+	{
+		//enginePowerValue = 0f;
+		stopPlayer = true;
+	}
+	
+	void startEngines()
+	{
+		stopPlayer = false;
 	}
 
 

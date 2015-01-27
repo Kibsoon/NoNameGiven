@@ -14,6 +14,8 @@ public class SpawnManager : MonoBehaviour {
 	private GameObject[] enemyTab = new GameObject[4];
 	private Vector3 spawnPosition = new Vector3(0,0,0);
 
+	private float spawnShorterTime;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -25,6 +27,8 @@ public class SpawnManager : MonoBehaviour {
 		enemyTab[3] = boss;
 
 		StartCoroutine (EnemySpawn() );
+
+		spawnShorterTime = timeToRespawn;
 	}
 	
 	IEnumerator EnemySpawn()
@@ -56,7 +60,12 @@ public class SpawnManager : MonoBehaviour {
 
 
 			Instantiate(enemyTab[enemyNumber], spawnPosition, Quaternion.identity);
-			yield return new WaitForSeconds(timeToRespawn);
+
+			spawnShorterTime -= 0.01f;
+			if(spawnShorterTime > 0)
+				yield return new WaitForSeconds(timeToRespawn);
+			else
+				yield return new WaitForSeconds(0);
 		}
 	}
 

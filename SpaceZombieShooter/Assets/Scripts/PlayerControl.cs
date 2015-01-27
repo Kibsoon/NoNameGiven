@@ -122,7 +122,8 @@ public class PlayerControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-
+		if(!gameObject)
+			return;
 
 
 		showCurrentHitPoints ();
@@ -274,9 +275,11 @@ public class PlayerControl : MonoBehaviour {
 		{
 			collision.gameObject.SendMessageUpwards("TakeDamage", 999, SendMessageOptions.DontRequireReceiver);
 
+
 			gameObject.SendMessageUpwards("TakeDamage", 300, SendMessageOptions.DontRequireReceiver);
 
-
+			if(collision.gameObject.name == "Boss(Clone)")
+				gameObject.SendMessageUpwards("TakeDamage", 99999, SendMessageOptions.DontRequireReceiver);
 
 		}
 		/*
