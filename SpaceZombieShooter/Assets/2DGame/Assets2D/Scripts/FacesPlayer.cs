@@ -9,7 +9,7 @@ public class FacesPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (player == null) {
-			GameObject go = GameObject.Find("Player");
+			GameObject go = GameObject.Find("Player2D");
 			if (go != null) {
 				player = go.transform;
 			}

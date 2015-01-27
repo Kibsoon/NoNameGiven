@@ -75,7 +75,9 @@ public class DamageHandler: MonoBehaviour
 	    }
 	    if (numberOfEnemies == 0)
 	    {
-	        Application.LoadLevel("YouWon");
+	        //Application.LoadLevel("YouWon");
+
+			Destroy ( GameObject.Find("GameObjectForGameHold"));
 	    }
 	}
 

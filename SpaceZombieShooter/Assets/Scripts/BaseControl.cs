@@ -88,6 +88,12 @@ public class BaseControl : MonoBehaviour {
 		showCurrentHitPoints ();
 
 
+		if (!GameObject.Find ("GameObjectForGameHold")) 
+		{
+			player.SendMessageUpwards("startEngines", SendMessageOptions.DontRequireReceiver);
+			//	player.SetActive(true);
+		}
+
 
 
 		var playerDistance = Vector3.Distance(myTransform.position, player.transform.position);
@@ -102,10 +108,12 @@ public class BaseControl : MonoBehaviour {
 
 				if (Input.GetKeyDown ("f")) 
 				{
+					player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
+
 					if(Random.Range (0, 200) < 100)
-						Application.LoadLevel("2DShooter 1");
+						Application.LoadLevelAdditive("2DShooter 1");
 					else
-						Application.LoadLevel("2DShooter 2");
+						Application.LoadLevelAdditive("2DShooter 2");
 				}
 
 			}

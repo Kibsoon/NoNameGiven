@@ -72,6 +72,12 @@ public class Health : MonoBehaviour {
 		currentHitPoints = hitPoints;
 	}
 
+	void playerHPMaxUp()
+	{
+		hitPoints += hitPoints * 0.1f;
+		currentHitPoints = hitPoints;
+	}
+
 	void moreDamageToEnemy ()
 	{
 		damageToEnemy += 25f;

@@ -14,7 +14,12 @@ public class SpawnManager : MonoBehaviour {
 	private GameObject[] enemyTab = new GameObject[4];
 	private Vector3 spawnPosition = new Vector3(0,0,0);
 
-	private float spawnShorterTime;
+	public float spawnShorterTime = 0.01f;
+	public int wavesToBreak = 10;
+	private int currentWave;
+	public int secOfBreak = 20;
+	public GUIText WaveNRGUI;
+	private int waveNumber;
 
 	// Use this for initialization
 	void Start () 
@@ -28,7 +33,10 @@ public class SpawnManager : MonoBehaviour {
 
 		StartCoroutine (EnemySpawn() );
 
-		spawnShorterTime = timeToRespawn;
+		currentWave = 1;
+
+		WaveNRGUI.text = "Wave 1";
+		waveNumber = 1;
 	}
 	
 	IEnumerator EnemySpawn()
@@ -61,8 +69,28 @@ public class SpawnManager : MonoBehaviour {
 
 			Instantiate(enemyTab[enemyNumber], spawnPosition, Quaternion.identity);
 
-			spawnShorterTime -= 0.01f;
-			if(spawnShorterTime > 0)
+
+
+
+			if(currentWave == 0)
+			{
+				waveNumber++;
+				WaveNRGUI.text = "Wave " + waveNumber;
+			}
+
+			currentWave++;
+			if(currentWave >= wavesToBreak)
+			{
+				currentWave = 0;
+
+				yield return new WaitForSeconds(secOfBreak);
+			}
+				
+			
+			
+			timeToRespawn -= spawnShorterTime ;
+			Debug.Log("wave " + currentWave);
+			if(timeToRespawn > 0)
 				yield return new WaitForSeconds(timeToRespawn);
 			else
 				yield return new WaitForSeconds(0);

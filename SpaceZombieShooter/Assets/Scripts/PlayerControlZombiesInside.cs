@@ -10,11 +10,15 @@ public class PlayerControlZombiesInside : MonoBehaviour {
 	public int zombiesToEndWarning = 3;
 	public int zombiesToEnd = 6;
 
+	private GameObject player;
+
 	// Use this for initialization
 	void Start () 
 	{
 		zombiesNr = 0;
 		ZombiesInPlayerGUI.text = "Zombies: " + zombiesNr + "/" + zombiesToEnd;
+
+		player = GameObject.Find ("Player");
 	}
 
 
@@ -46,7 +50,11 @@ public class PlayerControlZombiesInside : MonoBehaviour {
 		if(!gameObject)
 			return;
 
-
+		if (!GameObject.Find ("GameObjectForGameHold")) 
+		{
+			player.SendMessageUpwards("startEngines", SendMessageOptions.DontRequireReceiver);
+		//	player.SetActive(true);
+		}
 
 
 		if(ZombieWarningGUI.text == "Uwaga, masz trupy na statku! Naciśnij G żeby obronić statek!" )
@@ -55,7 +63,10 @@ public class PlayerControlZombiesInside : MonoBehaviour {
 				
 				if (Input.GetKeyDown ("g")) 
 				{
-					Application.LoadLevel("2DShooter");
+				player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
+
+				//Application.LoadLevel("2DShooter");
+				Application.LoadLevelAdditive("2DShooter");
 				}
 				
 		}
