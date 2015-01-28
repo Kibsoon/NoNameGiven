@@ -10,7 +10,7 @@ public class ShopControlInShop : MonoBehaviour {
 	public float costHealBase = 200f;
 	public float costMaxHPPlayer = 400f;
 	public float costMaxHPBase = 600f;
-	public float costNewTurets = 1000f;
+	public float costNewTurets = 10000f;
 
 
 	// Use this for initialization

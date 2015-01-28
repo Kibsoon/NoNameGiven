@@ -34,7 +34,8 @@ public class ShopControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-
+		if(!player)
+			return;
 
 
 		var playerDistance = Vector3.Distance(baseObject.transform.position, player.transform.position);
@@ -43,12 +44,12 @@ public class ShopControl : MonoBehaviour {
 		if (IsProperlyDistance (playerDistance)  ) 
 		{
 			if(Screen.showCursor == false)
-				toEnterShopGUI.text = "Naciśnij P żeby wejść do sklepu!";
+				toEnterShopGUI.text = "Press P to open shop!";
 
 
 				if(Input.GetKeyDown ("p"))
 				{
-					toEnterShopGUI.text = "Naciśnij O żeby wyjść ze sklepu!";
+					toEnterShopGUI.text = "Press O to close shop";
 				
 					player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
 					
@@ -60,7 +61,7 @@ public class ShopControl : MonoBehaviour {
 
 			if(Input.GetKeyDown ("o"))
 			{
-				toEnterShopGUI.text = "Naciśnij P żeby wejść do sklepu!";
+				toEnterShopGUI.text = "Press P to open shop!";
 
 				player.SendMessageUpwards("startEngines", SendMessageOptions.DontRequireReceiver);
 
@@ -70,7 +71,7 @@ public class ShopControl : MonoBehaviour {
 		}
 		else toEnterShopGUI.text = " ";
 
-		if(toEnterShopGUI.text == "Naciśnij O żeby wyjść ze sklepu!") 
+		if(toEnterShopGUI.text == "Press O to close shop") 
 			player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
 
 

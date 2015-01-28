@@ -31,7 +31,7 @@ public class PlayerControlZombiesInside : MonoBehaviour {
 			
 			if(zombiesNr >= zombiesToEndWarning)
 			{
-				ZombieWarningGUI.text = "Uwaga, masz trupy na statku! Naciśnij G żeby obronić statek!";
+				ZombieWarningGUI.text = "Warning, zombies in spaceship! Press G to defeat them!";
 			}
 			else ZombieWarningGUI.text = " ";
 			
@@ -50,14 +50,16 @@ public class PlayerControlZombiesInside : MonoBehaviour {
 		if(!gameObject)
 			return;
 
-		if (!GameObject.Find ("GameObjectForGameHold")) 
+		if (GameObject.Find ("GameObjectForGameHold")) 
 		{
-			player.SendMessageUpwards("startEngines", SendMessageOptions.DontRequireReceiver);
+			player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
 		//	player.SetActive(true);
 		}
+		else
+			player.SendMessageUpwards("startEngines", SendMessageOptions.DontRequireReceiver);
 
 
-		if(ZombieWarningGUI.text == "Uwaga, masz trupy na statku! Naciśnij G żeby obronić statek!" )
+		if(ZombieWarningGUI.text == "Warning, zombies in spaceship! Press G to defeat them!" )
 		{
 			//ZombieWarningGUI.text = "Uwaga, masz trupy na statku! Naciśnij G żeby obronić bazę!";
 				
@@ -67,13 +69,16 @@ public class PlayerControlZombiesInside : MonoBehaviour {
 
 				//Application.LoadLevel("2DShooter");
 				Application.LoadLevelAdditive("2DShooter");
+
+				zombiesNr = 0;
+				ZombiesInPlayerGUI.text = "Zombies: " + zombiesNr + "/" + zombiesToEnd;
 				}
 				
 		}
 		else ZombieWarningGUI.text = " ";
 
 		if(zombiesNr >= zombiesToEndWarning)
-			ZombieWarningGUI.text = "Uwaga, masz trupy na statku! Naciśnij G żeby obronić statek!";
+			ZombieWarningGUI.text = "Warning, zombies in spaceship! Press G to defeat them!";
 		else ZombieWarningGUI.text = " ";
 
 
