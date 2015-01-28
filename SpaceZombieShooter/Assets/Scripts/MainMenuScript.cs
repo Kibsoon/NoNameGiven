@@ -27,6 +27,9 @@ public class MainMenuScript : MonoBehaviour {
 		else if(gameObject.name == "Enemy1")
 			Application.Quit();
 
+		else if(gameObject.name == "Small explosion")
+			Application.LoadLevel("Scene1");
+
 		else 
 			Application.LoadLevel ("GameOver");
 	}

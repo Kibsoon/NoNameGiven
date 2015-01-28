@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{4D451F6A-F83C-0B16-3B13-71A3E2128499}") = "SpaceZombieShooter", "Assembly-CSharp.csproj", "{14090C02-5798-0057-27FB-341B74291E94}"
 EndProject
+Project("{4D451F6A-F83C-0B16-3B13-71A3E2128499}") = "SpaceZombieShooter", "Assembly-UnityScript-firstpass.unityproj", "{414CA1F8-1F98-F51D-091F-DE0ED4106D49}"
+EndProject
 Project("{4D451F6A-F83C-0B16-3B13-71A3E2128499}") = "SpaceZombieShooter", "Assembly-UnityScript.unityproj", "{9CEE255F-B170-FFD7-254C-7F02CC8C8854}"
 EndProject
 Global
@@ -15,6 +17,10 @@ Global
 		{14090C02-5798-0057-27FB-341B74291E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14090C02-5798-0057-27FB-341B74291E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14090C02-5798-0057-27FB-341B74291E94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{414CA1F8-1F98-F51D-091F-DE0ED4106D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{414CA1F8-1F98-F51D-091F-DE0ED4106D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{414CA1F8-1F98-F51D-091F-DE0ED4106D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{414CA1F8-1F98-F51D-091F-DE0ED4106D49}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9CEE255F-B170-FFD7-254C-7F02CC8C8854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9CEE255F-B170-FFD7-254C-7F02CC8C8854}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CEE255F-B170-FFD7-254C-7F02CC8C8854}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -23,7 +29,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																															GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
