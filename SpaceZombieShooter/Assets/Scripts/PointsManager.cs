@@ -10,6 +10,8 @@ public class PointsManager : MonoBehaviour {
 	public float pointsForEnemy3 = 200f;
 	public float pointsForBoss = 1000f;
 
+	public GUIText youLoseGUI;
+
 
 	private float money = 0f;
 	public GUIText MoneyGUI;
@@ -22,6 +24,17 @@ public class PointsManager : MonoBehaviour {
 	{
 		if(GameObject.Find ("Shop"))
 			GameObject.Find ("Shop").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
+
+
+		if((Input.GetKeyDown ("space") && youLoseGUI.text == "You Lose!!!") 
+		   || Input.GetKeyDown(KeyCode.Mouse0) && youLoseGUI.text == "You Lose!!!")
+		{
+			// tutaj jakis zapis punktow sie da
+
+			Application.LoadLevel("GameOver");
+		}
+			
+			
 	}
 
 	void addPoints(string deadObjectName)

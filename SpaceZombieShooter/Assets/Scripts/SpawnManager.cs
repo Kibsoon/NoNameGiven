@@ -89,7 +89,7 @@ public class SpawnManager : MonoBehaviour {
 			
 			
 			timeToRespawn -= spawnShorterTime ;
-			Debug.Log("wave " + currentWave);
+			//Debug.Log("wave " + currentWave);
 			if(timeToRespawn > 0)
 				yield return new WaitForSeconds(timeToRespawn);
 			else

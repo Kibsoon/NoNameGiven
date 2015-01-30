@@ -60,8 +60,10 @@ public class DamageHandler: MonoBehaviour
 	void Die() {    
 	    if (gameObject.tag == "User")
 	    {
-            Destroy(gameObject);
-	        Application.LoadLevel("GameOver");
+            //Destroy(gameObject);
+			Destroy ( GameObject.Find("GameObjectForGameHold"));
+			GameObject.Find("SpaceBase").SendMessageUpwards("TakeDamage", 999999, SendMessageOptions.DontRequireReceiver);
+	        //Application.LoadLevel("GameOver");
 	    }
         else if (gameObject.name == "Enemy")
 	    {

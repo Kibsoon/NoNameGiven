@@ -45,7 +45,8 @@ public class BaseControl : MonoBehaviour {
 
 			if(zombiesNr >= zombiesToEnd)
 			{
-				Application.LoadLevel("GameOver");
+				GameObject.Find("SpaceBase").SendMessageUpwards("TakeDamage", 999999, SendMessageOptions.DontRequireReceiver);
+				//Application.LoadLevel("GameOver");
 			}
 			
 		}
@@ -134,7 +135,8 @@ public class BaseControl : MonoBehaviour {
 		else 
 			tooFarawayWarningGUI.text = " ";
 		if(!(playerDistance <= tooFaraway))
-			Application.LoadLevel("GameOver");
+			player.SendMessageUpwards("TakeDamage", 999999, SendMessageOptions.DontRequireReceiver);
+			//Application.LoadLevel("GameOver");
 
 	}
 }

@@ -71,4 +71,64 @@ public class ShopControlInShop : MonoBehaviour {
 
 		
 	}
+
+
+
+
+
+
+
+
+
+	// shoping by mouse 
+	void buyThingsFromPlayerButtons(string cubeNr)
+	{
+		//Debug.Log ("jest git" + cubeNr);
+
+
+		if(cubeNr == "Cube2" && money >= costHealPlayer)
+		{
+			GameObject.Find ("Player").SendMessage("playerHPUp", SendMessageOptions.DontRequireReceiver);
+			money -= costHealPlayer;
+			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
+		}
+		if(cubeNr == "Cube4" && money >= costHealBase)
+		{
+			GameObject.Find ("SpaceBase").SendMessage("playerHPUp", SendMessageOptions.DontRequireReceiver);
+			money -= costHealBase;
+			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
+			
+		}
+		
+		if(cubeNr == "Cube1" && money >= costMaxHPPlayer)
+		{
+			GameObject.Find ("Player").SendMessage("playerHPMaxUp", SendMessageOptions.DontRequireReceiver);
+			money -= costMaxHPPlayer;
+			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
+			
+		}
+		if(cubeNr == "Cube3" && money >= costMaxHPBase)
+		{
+			GameObject.Find ("SpaceBase").SendMessage("playerHPMaxUp", SendMessageOptions.DontRequireReceiver);
+			money -= costMaxHPBase;
+			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
+			
+		}
+		
+		
+		if(cubeNr == "Cube5" && money >= costNewTurets)
+		{
+			GameObject.Instantiate(turrets);
+			money -= costNewTurets;
+			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
+			
+		}
+
+
+	}
+
+
 }
+
+
+

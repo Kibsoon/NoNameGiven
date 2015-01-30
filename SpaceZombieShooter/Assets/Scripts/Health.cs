@@ -10,6 +10,8 @@ public class Health : MonoBehaviour {
     public GameObject explosion;
 	private float damageToEnemy = 25f;
 
+	public GUIText youLoseGUI;
+
 
 
 	// Use this for initialization
@@ -46,7 +48,13 @@ public class Health : MonoBehaviour {
 
 			if(gameObject.tag == "Friend" || gameObject.tag == "Player")
 			{
-				Application.LoadLevel("GameOver");
+				if(gameObject.tag == "Friend")
+					GameObject.Find("Player").SendMessageUpwards("TakeDamage", 999999, SendMessageOptions.DontRequireReceiver);
+
+				youLoseGUI.text = "You Lose!!!";
+				//if(Input.GetKeyDown ("q") && youLoseGUI.text == "You Lose!!!")
+
+				//Application.LoadLevel("GameOver");
 			}
 
 			if(gameObject.tag == "Enemy")

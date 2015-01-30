@@ -8,6 +8,9 @@ public class ShopControl : MonoBehaviour {
 	private GameObject baseObject;
 	private GameObject shop;
 	private GameObject game2D;
+	private GameObject buttons;
+
+
 
 
 	public GUIText toEnterShopGUI;
@@ -21,6 +24,10 @@ public class ShopControl : MonoBehaviour {
 
 		//renderer.enabled = false;
 		shop.SetActive (false);
+
+		buttons = GameObject.Find ("ShopButtons");
+		buttons.SetActive (false);
+
 	}
 
 
@@ -53,8 +60,13 @@ public class ShopControl : MonoBehaviour {
 				
 					player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
 					
+				//player.transform.rotation.Set(0f,0f,0f,0f);
+					
+
+
 					Screen.showCursor = true; 
 					shop.SetActive (true);
+					buttons.SetActive (true);
 				}
 
 
@@ -67,6 +79,7 @@ public class ShopControl : MonoBehaviour {
 
 				Screen.showCursor = false; 
 				shop.SetActive (false);
+				buttons.SetActive (false);
 			}
 		}
 		else toEnterShopGUI.text = " ";

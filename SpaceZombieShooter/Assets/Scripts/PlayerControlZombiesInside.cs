@@ -38,7 +38,8 @@ public class PlayerControlZombiesInside : MonoBehaviour {
 			
 			if(zombiesNr >= zombiesToEnd)
 			{
-				Application.LoadLevel("GameOver");
+				//Application.LoadLevel("GameOver");
+				player.SendMessageUpwards("TakeDamage", 999999, SendMessageOptions.DontRequireReceiver);
 			}
 			
 		}

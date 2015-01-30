@@ -267,8 +267,8 @@ public class PlayerControl : MonoBehaviour {
 			Instantiate (destroyObjectFX, pos, rot);
 			Destroy(gameObject);
 
-
-			Application.LoadLevel("GameOver");
+			gameObject.SendMessageUpwards("TakeDamage", 999999, SendMessageOptions.DontRequireReceiver);
+			//Application.LoadLevel("GameOver");
 		}
 
 		if (collision.gameObject.tag == "Enemy" )
