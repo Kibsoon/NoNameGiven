@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using UnityEngine;
 using System.Collections;
 
-public class DamageHandler: MonoBehaviour {
-
+public class DamageHandler: MonoBehaviour
+{
 	public float invulnPeriod = 0;
 	public int health = 2;
 	float invulnTimer = 0;
@@ -27,6 +28,10 @@ public class DamageHandler: MonoBehaviour {
             if (other.gameObject.tag != "Box")
             {
                 health--;
+                if (other.gameObject.tag == "Bullet")
+                {
+                    Destroy(other.gameObject);
+                }
             }
         }
 	}
@@ -55,14 +60,16 @@ public class DamageHandler: MonoBehaviour {
 	void Die() {    
 	    if (gameObject.tag == "User")
 	    {
-            Destroy(gameObject);
-	        Application.LoadLevel("GameOver");
+            //Destroy(gameObject);
+			Destroy ( GameObject.Find("GameObjectForGameHold"));
+			GameObject.Find("SpaceBase").SendMessageUpwards("TakeDamage", 999999, SendMessageOptions.DontRequireReceiver);
+	        //Application.LoadLevel("GameOver");
 	    }
-        else if (gameObject.tag == "Enemy2D")
+        else if (gameObject.name == "Enemy")
 	    {
+            audio.Play();
 	        Destroy(gameObject);
 	        numberOfEnemies--;
-            Debug.Log(numberOfEnemies);
 	    }
 	    else
 	    {
@@ -70,7 +77,9 @@ public class DamageHandler: MonoBehaviour {
 	    }
 	    if (numberOfEnemies == 0)
 	    {
-	        Application.LoadLevel("YouWon");
+	        //Application.LoadLevel("YouWon");
+
+			Destroy ( GameObject.Find("GameObjectForGameHold"));
 	    }
 	}
 

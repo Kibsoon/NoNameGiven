@@ -10,11 +10,15 @@ public class PlayerControlZombiesInside : MonoBehaviour {
 	public int zombiesToEndWarning = 3;
 	public int zombiesToEnd = 6;
 
+	private GameObject player;
+
 	// Use this for initialization
 	void Start () 
 	{
 		zombiesNr = 0;
 		ZombiesInPlayerGUI.text = "Zombies: " + zombiesNr + "/" + zombiesToEnd;
+
+		player = GameObject.Find ("Player");
 	}
 
 
@@ -27,14 +31,15 @@ public class PlayerControlZombiesInside : MonoBehaviour {
 			
 			if(zombiesNr >= zombiesToEndWarning)
 			{
-				ZombieWarningGUI.text = "Uwaga, masz trupy na statku! Naciśnij G żeby obronić statek!";
+				ZombieWarningGUI.text = "Warning, zombies in spaceship! Press G to defeat them!";
 			}
 			else ZombieWarningGUI.text = " ";
 			
 			
 			if(zombiesNr >= zombiesToEnd)
 			{
-				Application.LoadLevel("GameOver");
+				//Application.LoadLevel("GameOver");
+				player.SendMessageUpwards("TakeDamage", 999999, SendMessageOptions.DontRequireReceiver);
 			}
 			
 		}
@@ -46,23 +51,35 @@ public class PlayerControlZombiesInside : MonoBehaviour {
 		if(!gameObject)
 			return;
 
+		if (GameObject.Find ("GameObjectForGameHold")) 
+		{
+			player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
+		//	player.SetActive(true);
+		}
+		else
+			player.SendMessageUpwards("startEngines", SendMessageOptions.DontRequireReceiver);
 
 
-
-		if(ZombieWarningGUI.text == "Uwaga, masz trupy na statku! Naciśnij G żeby obronić statek!" )
+		if(ZombieWarningGUI.text == "Warning, zombies in spaceship! Press G to defeat them!" )
 		{
 			//ZombieWarningGUI.text = "Uwaga, masz trupy na statku! Naciśnij G żeby obronić bazę!";
 				
 				if (Input.GetKeyDown ("g")) 
 				{
-					Application.LoadLevel("2DShooter");
+				player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
+
+				//Application.LoadLevel("2DShooter");
+				Application.LoadLevelAdditive("2DShooter");
+
+				zombiesNr = 0;
+				ZombiesInPlayerGUI.text = "Zombies: " + zombiesNr + "/" + zombiesToEnd;
 				}
 				
 		}
 		else ZombieWarningGUI.text = " ";
 
 		if(zombiesNr >= zombiesToEndWarning)
-			ZombieWarningGUI.text = "Uwaga, masz trupy na statku! Naciśnij G żeby obronić statek!";
+			ZombieWarningGUI.text = "Warning, zombies in spaceship! Press G to defeat them!";
 		else ZombieWarningGUI.text = " ";
 
 

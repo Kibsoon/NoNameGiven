@@ -38,14 +38,15 @@ public class BaseControl : MonoBehaviour {
 
 			if(zombiesNr >= zombiesToEndWarning)
 			{
-				ZombieWarningGUI.text = "Uwaga, zombie w bazie!";
+				ZombieWarningGUI.text = "Warning, zombies in base!";
 			}
 			else ZombieWarningGUI.text = " ";
 
 
 			if(zombiesNr >= zombiesToEnd)
 			{
-				Application.LoadLevel("GameOver");
+				GameObject.Find("SpaceBase").SendMessageUpwards("TakeDamage", 999999, SendMessageOptions.DontRequireReceiver);
+				//Application.LoadLevel("GameOver");
 			}
 			
 		}
@@ -62,7 +63,8 @@ public class BaseControl : MonoBehaviour {
 			
 			hpGUI.text = "SpaceBase HP: " + hp.currentHitPoints.ToString () + "/" + hp.hitPoints.ToString ();
 			//ToString( hp.currentHitPoints);
-			
+			GameObject.Find ("HUD").SendMessageUpwards("setSpaceBaseHPGUITexture", hp.currentHitPoints/hp.hitPoints, SendMessageOptions.DontRequireReceiver);
+
 		}
 	}
 
@@ -88,6 +90,12 @@ public class BaseControl : MonoBehaviour {
 		showCurrentHitPoints ();
 
 
+		if (GameObject.Find ("GameObjectForGameHold")) 
+		{
+			player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
+			//	player.SetActive(true);
+		}
+
 
 
 		var playerDistance = Vector3.Distance(myTransform.position, player.transform.position);
@@ -95,35 +103,41 @@ public class BaseControl : MonoBehaviour {
 
 		if(IsProperlyDistance(playerDistance))
 		{
-			if(ZombieWarningGUI.text == "Uwaga, zombie w bazie!" ||
-			   ZombieWarningGUI.text == "Uwaga, zombie w bazie! Naciśnij F żeby obronić bazę!" )
+			if(ZombieWarningGUI.text == "Warning, zombies in base!" ||
+			   ZombieWarningGUI.text == "Warning, zombies in base! Press F to defeat them!" )
 			{
-				ZombieWarningGUI.text = "Uwaga, zombie w bazie! Naciśnij F żeby obronić bazę!";
+				ZombieWarningGUI.text = "Warning, zombies in base! Press F to defeat them!";
 
 				if (Input.GetKeyDown ("f")) 
 				{
+					player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
+
 					if(Random.Range (0, 200) < 100)
-						Application.LoadLevel("2DShooter 1");
+						Application.LoadLevelAdditive("2DShooter 1");
 					else
-						Application.LoadLevel("2DShooter 2");
+						Application.LoadLevelAdditive("2DShooter 2");
+
+					zombiesNr = 0;
+					ZombiesInBaseGUI.text = "Zombies: " + zombiesNr + "/" + zombiesToEnd;
 				}
 
 			}
 			else ZombieWarningGUI.text = " ";
 		}
 		else if(zombiesNr >= zombiesToEndWarning)
-			ZombieWarningGUI.text = "Uwaga, zombie w bazie!";
+			ZombieWarningGUI.text = "Warning, zombies in base!";
 		else ZombieWarningGUI.text = " ";
 
 
 
 
 		if (!(playerDistance <= tooFarawayWarning))
-						tooFarawayWarningGUI.text = "Jesteś za daleko, cofnij się";
+						tooFarawayWarningGUI.text = "You are too far away, get back!";
 		else 
 			tooFarawayWarningGUI.text = " ";
 		if(!(playerDistance <= tooFaraway))
-			Application.LoadLevel("GameOver");
+			player.SendMessageUpwards("TakeDamage", 999999, SendMessageOptions.DontRequireReceiver);
+			//Application.LoadLevel("GameOver");
 
 	}
 }

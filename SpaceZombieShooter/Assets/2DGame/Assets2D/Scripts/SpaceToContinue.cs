@@ -12,8 +12,11 @@ public class SpaceToContinue : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if (Input.GetKeyDown ("space") ) 
+		Screen.showCursor = true; 
+
+		if (Input.GetKeyDown ("space") || Input.GetKeyDown(KeyCode.Mouse0)) 
 		{
+			Screen.showCursor = false; 
 			Application.LoadLevel(sceneName);
 		}
 	}
