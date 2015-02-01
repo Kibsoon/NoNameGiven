@@ -63,7 +63,8 @@ public class BaseControl : MonoBehaviour {
 			
 			hpGUI.text = "SpaceBase HP: " + hp.currentHitPoints.ToString () + "/" + hp.hitPoints.ToString ();
 			//ToString( hp.currentHitPoints);
-			
+			GameObject.Find ("HUD").SendMessageUpwards("setSpaceBaseHPGUITexture", hp.currentHitPoints/hp.hitPoints, SendMessageOptions.DontRequireReceiver);
+
 		}
 	}
 

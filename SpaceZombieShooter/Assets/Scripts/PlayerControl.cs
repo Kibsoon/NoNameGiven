@@ -89,6 +89,9 @@ public class PlayerControl : MonoBehaviour {
 				enginePercentageText.text = "Engines 100%";
 			else
 				enginePercentageText.text = "Engines " + (enginePowerValue * 100).ToString("f0") + "%";
+
+			GameObject.Find ("HUD").SendMessageUpwards("setEnginesValueGUITexture", enginePowerValue, SendMessageOptions.DontRequireReceiver);
+
 				
 		}
 	}
@@ -115,6 +118,7 @@ public class PlayerControl : MonoBehaviour {
 
 			hpGUI.text = "Player HP: " + hp.currentHitPoints.ToString () + "/" + hp.hitPoints.ToString ();
 
+			GameObject.Find ("HUD").SendMessageUpwards("setPlayerHPGUITexture", hp.currentHitPoints/hp.hitPoints, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 
@@ -164,18 +168,18 @@ public class PlayerControl : MonoBehaviour {
 		desiredTurnY = 0f;
 
 		// forward - engine power
-		desiredImpulseInput += Input.GetAxis ("Thrust") * impulseSensitivity * Time.deltaTime; //left control speed up spaceship
+		desiredImpulseInput += Input.GetAxis ("Vertical") * impulseSensitivity * Time.deltaTime; //left control speed up spaceship
         //desiredImpulseInput += (Input.GetKeyDown(KeyCode.LeftAlt) ) * impulseSensitivity * Time.deltaTime; //left alt speed down spaceship
 		desiredImpulse = (Mathf.Clamp (desiredImpulseInput, GetImpulse2(), GetMaxImpulse2() ));
 		desiredImpulse += desiredImpulseInput;
 
-
+		/*
 		// KEYBOARD
 		// up and down
 		desiredTurnXInput += Input.GetAxis ("Vertical") * turnSensitivity * Time.deltaTime;
 		desiredTurnX = (Mathf.Clamp (desiredTurnXInput, -GetMaxTurnRate(), GetMaxTurnRate() ));
 		desiredTurnX += desiredTurnXInput;
-
+		*/
 		// left and right
 		desiredTurnYInput += Input.GetAxis ("Horizontal") * turnSensitivity * Time.deltaTime;
 		desiredTurnY = (Mathf.Clamp (desiredTurnYInput, -GetMaxTurnRate(), GetMaxTurnRate() ));

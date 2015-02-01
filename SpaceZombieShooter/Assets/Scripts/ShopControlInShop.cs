@@ -4,6 +4,8 @@ using System.Collections;
 public class ShopControlInShop : MonoBehaviour {
 
 	public GameObject turrets;
+	public GameObject turretsHeavy;
+
 	public float money =0f;
 
 	public float costHealPlayer = 100f;
@@ -11,6 +13,7 @@ public class ShopControlInShop : MonoBehaviour {
 	public float costMaxHPPlayer = 400f;
 	public float costMaxHPBase = 600f;
 	public float costNewTurets = 10000f;
+	public float costNewHeavyTurets = 15000f;
 
 
 	// Use this for initialization
@@ -69,6 +72,13 @@ public class ShopControlInShop : MonoBehaviour {
 
 		}
 
+		if(Input.GetKeyDown ("n") && money >= costNewHeavyTurets)
+		{
+			GameObject.Instantiate(turretsHeavy);
+			money -= costNewHeavyTurets;
+			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
+			
+		}
 		
 	}
 
@@ -120,6 +130,14 @@ public class ShopControlInShop : MonoBehaviour {
 		{
 			GameObject.Instantiate(turrets);
 			money -= costNewTurets;
+			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
+			
+		}
+
+		if(cubeNr == "Cube6" && money >= costNewHeavyTurets)
+		{
+			GameObject.Instantiate(turretsHeavy);
+			money -= costNewHeavyTurets;
 			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
 			
 		}

@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\BaseControl.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\EnemyControl.cs" />
+     <Compile Include="Assets\Scripts\HUDControl.cs" />
      <Compile Include="Assets\Scripts\Health.cs" />
      <Compile Include="Assets\Scripts\LaserProjectile.cs" />
      <Compile Include="Assets\Scripts\MainMenuScript.cs" />

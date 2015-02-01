@@ -39,8 +39,10 @@ public class LaserProjectile : MonoBehaviour {
 	void OnCollisionEnter (Collision collision)
 	{
 
-		if(gameObject.name == "Laser(Clone)")
-		{
+
+
+		//if(gameObject.name == "Laser(Clone)")
+		//{
 			if (collision.gameObject.tag == "Enemy")
 			{
 				collision.gameObject.SendMessageUpwards("TakeDamage", playerDamage, SendMessageOptions.DontRequireReceiver);
@@ -52,13 +54,13 @@ public class LaserProjectile : MonoBehaviour {
 				Instantiate (laserHitFXPrefab, pos, rot);
 				Destroy(gameObject);
 			}
-		}
+		//}
 
 
 
 		if (collision.gameObject.tag == "Friend" || collision.gameObject.tag == "Player")
 		{
-			collision.gameObject.SendMessageUpwards("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+			collision.gameObject.SendMessageUpwards("TakeDamage", playerDamage, SendMessageOptions.DontRequireReceiver);
 
 			// destroy laser on collision
 			ContactPoint contact = collision.contacts[0]; 	// point of collision

@@ -25,9 +25,9 @@ public class Health : MonoBehaviour {
 
 	public void TakeDamage (float amt)
 	{
-		if(gameObject.tag == "Enemy")
-			currentHitPoints -= damageToEnemy;
-		else
+		//if(gameObject.tag == "Enemy")
+		//	currentHitPoints -= damageToEnemy;
+		//else
 			currentHitPoints -= amt;
 
 		if(currentHitPoints <= 0)
@@ -73,6 +73,10 @@ public class Health : MonoBehaviour {
 		return currentHitPoints;
 	}
 
+	float getHitPoints ()
+	{
+		return hitPoints;
+	}
 
 	void playerHPUp()
 	{
