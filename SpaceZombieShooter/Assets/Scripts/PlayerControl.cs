@@ -189,18 +189,18 @@ public class PlayerControl : MonoBehaviour {
 
 
 
-
+		Screen.lockCursor = false;
 		//MOUSE
 		// up and down
 		desiredTurnXInput += Input.GetAxis ("VerticalMouse") * turnSensitivityMouse * Time.deltaTime;
 		desiredTurnX = (Mathf.Clamp (desiredTurnXInput, -GetMaxTurnRate(), GetMaxTurnRate() ));
 		desiredTurnX += desiredTurnXInput;
-		
+
 		// left and right
 		desiredTurnYInput += Input.GetAxis ("HorizontalMouse") * turnSensitivityMouse * Time.deltaTime;
 		desiredTurnY = (Mathf.Clamp (desiredTurnYInput, -GetMaxTurnRate(), GetMaxTurnRate() ));
 		desiredTurnY += desiredTurnYInput;
-
+		Screen.lockCursor = true;
 		// mouse in corner
 		if(Input.mousePosition.x <=100)
 			desiredTurnY -= sensitivityInCorner;

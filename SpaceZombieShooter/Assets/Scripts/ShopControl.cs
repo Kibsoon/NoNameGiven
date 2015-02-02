@@ -41,6 +41,7 @@ public class ShopControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+		Screen.lockCursor = false;
 		if(!player)
 			return;
 
