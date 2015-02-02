@@ -5,6 +5,7 @@ public class ShopControlInShop : MonoBehaviour {
 
 	public GameObject turrets;
 	public GameObject turretsHeavy;
+	public GameObject turretsSlowing;
 
 	public float money =0f;
 
@@ -14,6 +15,7 @@ public class ShopControlInShop : MonoBehaviour {
 	public float costMaxHPBase = 600f;
 	public float costNewTurets = 10000f;
 	public float costNewHeavyTurets = 15000f;
+	public float costNewSlowingTurets = 10000f;
 
 
 	// Use this for initialization
@@ -79,6 +81,14 @@ public class ShopControlInShop : MonoBehaviour {
 			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
 			
 		}
+
+		if(Input.GetKeyDown ("m") && money >= costNewSlowingTurets)
+		{
+			GameObject.Instantiate(turretsSlowing);
+			money -= costNewSlowingTurets;
+			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
+			
+		}
 		
 	}
 
@@ -138,6 +148,14 @@ public class ShopControlInShop : MonoBehaviour {
 		{
 			GameObject.Instantiate(turretsHeavy);
 			money -= costNewHeavyTurets;
+			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
+			
+		}
+
+		if(cubeNr == "Cube7" && money >= costNewSlowingTurets)
+		{
+			GameObject.Instantiate(turretsSlowing);
+			money -= costNewSlowingTurets;
 			GameObject.Find ("GameObjectForScripts").SendMessageUpwards ("setMoney", money, SendMessageOptions.DontRequireReceiver);
 			
 		}

@@ -22,6 +22,8 @@ public class ShopButtons : MonoBehaviour {
 			GameObject.Find ("Shop").SendMessage("buyThingsFromPlayerButtons", "Cube5", SendMessageOptions.DontRequireReceiver);
 		if(gameObject.name == "Cube6")
 			GameObject.Find ("Shop").SendMessage("buyThingsFromPlayerButtons", "Cube6", SendMessageOptions.DontRequireReceiver);
+		if(gameObject.name == "Cube7")
+			GameObject.Find ("Shop").SendMessage("buyThingsFromPlayerButtons", "Cube7", SendMessageOptions.DontRequireReceiver);
 	}
 
 	// Update is called once per frame

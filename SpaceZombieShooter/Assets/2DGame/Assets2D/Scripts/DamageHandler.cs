@@ -63,6 +63,7 @@ public class DamageHandler: MonoBehaviour
             //Destroy(gameObject);
 			Destroy ( GameObject.Find("GameObjectForGameHold"));
 			GameObject.Find("SpaceBase").SendMessageUpwards("TakeDamage", 999999, SendMessageOptions.DontRequireReceiver);
+			//GameObject.Find ("GameObjectForScripts").SendMessage("addPoints", "game2D", SendMessageOptions.DontRequireReceiver);
 	        //Application.LoadLevel("GameOver");
 	    }
         else if (gameObject.name == "Enemy")

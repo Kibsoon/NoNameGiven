@@ -18,6 +18,9 @@ public class EnemyControl : MonoBehaviour {
     private PlayerControl playerControl;
     private bool shooting;
 
+	//public Transform destroyObjectFX;
+
+
     public bool Shooting
     {
         get { return shooting; }
@@ -29,21 +32,21 @@ public class EnemyControl : MonoBehaviour {
         target = GameObject.FindWithTag("Friend");
         player = GameObject.Find("Player");
         camera = GameObject.FindWithTag("MainCamera");
-        if(player)
-            playerControl = player.GetComponent<PlayerControl>();
+        playerControl = player.GetComponent<PlayerControl>();
         shooting = false;
         Awake();
 
 		randomValueChanceToEnter = Random.Range (0, 100);
 	}
 	
-   
+
 	// Update is called once per frame
 	void Update () 
     {
-        if (!target || !player || !playerControl)
+        if (!target || !player)
             return;
-        
+
+      //  var speed = 1.0f;
         var targetDistance = Vector3.Distance(myTransform.position,target.transform.position);
         var playerDistance = Vector3.Distance(myTransform.position, player.transform.position);
 
@@ -122,6 +125,10 @@ public class EnemyControl : MonoBehaviour {
 		return false;
 	}
 
+	void slowingTurretTarget()
+	{
+		speed = 0.05f;
+	}
 
 	void OnCollisionEnter (Collision collision)
 	{
@@ -147,6 +154,10 @@ public class EnemyControl : MonoBehaviour {
 
 
 	}
+
+
+
+
 }
 
 

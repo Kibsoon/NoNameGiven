@@ -12,7 +12,7 @@ public class Health : MonoBehaviour {
 
 	public GUIText youLoseGUI;
 
-
+	public AudioSource ExplosionFXSound;
 
 	// Use this for initialization
 	void Start () 
@@ -25,9 +25,10 @@ public class Health : MonoBehaviour {
 
 	public void TakeDamage (float amt)
 	{
-		//if(gameObject.tag == "Enemy")
-		//	currentHitPoints -= damageToEnemy;
-		//else
+		if(amt == 10)
+			gameObject.SendMessageUpwards("slowingTurretTarget", SendMessageOptions.DontRequireReceiver);
+
+
 			currentHitPoints -= amt;
 
 		if(currentHitPoints <= 0)
@@ -39,6 +40,11 @@ public class Health : MonoBehaviour {
 
 	void Die()
 	{
+		if(ExplosionFXSound != null)
+		{
+			ExplosionFXSound.Play();
+		}
+
 
         if (gameObject.tag == "Enemy" || gameObject.tag == "Friend" || gameObject.tag == "Player")
 		{

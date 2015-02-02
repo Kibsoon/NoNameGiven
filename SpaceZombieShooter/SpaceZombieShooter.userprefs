@@ -1,21 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyControl.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Health.cs">
     <Files>
+      <File FileName="Assets\Scripts\Health.cs" Line="45" Column="20" />
       <File FileName="Assets\Scripts\HUDControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ShopControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ShopControlInShop.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ShopButtons.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MainMenuScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SpawnManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Health.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerShooting.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BaseControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PointsManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LaserProjectile.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TowerShooting.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ShopControl.cs" Line="87" Column="37" />
+      <File FileName="Assets\Scripts\ShopControlInShop.cs" Line="155" Column="22" />
+      <File FileName="Assets\Scripts\ShopButtons.cs" Line="26" Column="77" />
+      <File FileName="Assets\Scripts\MainMenuScript.cs" Line="16" Column="38" />
+      <File FileName="Assets\Scripts\PointsManager.cs" Line="22" Column="38" />
       <File FileName="Assets\Scripts\EnemyControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\2DGame\Assets2D\Scripts\SpaceToContinue.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HighScoresLoad.cs" Line="44" Column="3" />
+      <File FileName="Assets\Scripts\PlayerShooting.cs" Line="86" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
