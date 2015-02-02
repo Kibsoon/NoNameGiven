@@ -13,10 +13,10 @@ public class MainMenuScript : MonoBehaviour {
 	void OnMouseDown()
 	{
 		if(gameObject.tag == "Player")
-			Application.LoadLevel ("GameOver");
+			Application.LoadLevel ("HighScores");
 
-		else if(gameObject.tag == "Start")
-			Application.LoadLevel ("Story");
+		//else if(gameObject.tag == "Start")
+		//	Application.LoadLevel ("Story");
 
 		else if(gameObject.tag == "SimpleTower")
 			Application.LoadLevel ("License");
@@ -28,7 +28,7 @@ public class MainMenuScript : MonoBehaviour {
 			Application.Quit();
 
 		else if(gameObject.name == "Small explosion")
-			Application.LoadLevel("Scene1");
+			Application.LoadLevel("Story");
 
 		else 
 			Application.LoadLevel ("GameOver");

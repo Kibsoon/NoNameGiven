@@ -51,12 +51,12 @@ public class ShopControl : MonoBehaviour {
 		if (IsProperlyDistance (playerDistance)  ) 
 		{
 			if(Screen.showCursor == false)
-				toEnterShopGUI.text = "Press P to open shop!";
+				toEnterShopGUI.text = "Press E to open shop!";
 
 
-				if(Input.GetKeyDown ("p"))
+				if(Input.GetKeyDown ("e"))
 				{
-					toEnterShopGUI.text = "Press O to close shop";
+					toEnterShopGUI.text = "Press Q to close shop";
 				
 					player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
 					
@@ -71,9 +71,9 @@ public class ShopControl : MonoBehaviour {
 
 
 
-			if(Input.GetKeyDown ("o"))
+			if(Input.GetKeyDown ("q"))
 			{
-				toEnterShopGUI.text = "Press P to open shop!";
+				toEnterShopGUI.text = "Press E to open shop!";
 
 				player.SendMessageUpwards("startEngines", SendMessageOptions.DontRequireReceiver);
 
@@ -84,7 +84,7 @@ public class ShopControl : MonoBehaviour {
 		}
 		else toEnterShopGUI.text = " ";
 
-		if(toEnterShopGUI.text == "Press O to close shop") 
+		if(toEnterShopGUI.text == "Press Q to close shop") 
 			player.SendMessageUpwards("stopEngines", SendMessageOptions.DontRequireReceiver);
 
 

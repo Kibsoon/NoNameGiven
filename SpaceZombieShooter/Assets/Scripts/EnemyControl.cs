@@ -125,6 +125,10 @@ public class EnemyControl : MonoBehaviour {
 		return false;
 	}
 
+	void slowingTurretTarget()
+	{
+		speed = 0.05f;
+	}
 
 	void OnCollisionEnter (Collision collision)
 	{
