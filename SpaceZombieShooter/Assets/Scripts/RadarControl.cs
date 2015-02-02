@@ -1,36 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class RadarControl : MonoBehaviour {
 
-    GameObject[] enemies;
-    GameObject nearestEnemy;
+   
     Transform myTransform;
+
+    private GameObject[] enemyObj;
 
 	// Use this for initialization
 	void Start () 
     {
         Awake();
+       // enemies = new List<EnemyControl>();
 	}
 	
 	// Update is called once per frame
-	void Update () 
+    void Update()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        float targetDistance = Vector3.Distance(myTransform.position, enemies[0].transform.position);
-        nearestEnemy = enemies[0];
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        myTransform.LookAt(GetClosestEnemy(enemies));
+    }
 
-        foreach (var enemy in enemies)
+    Transform GetClosestEnemy(GameObject[] enemies)
+    {
+        Transform tMin = null;
+        float minDist = Mathf.Infinity;
+        Vector3 currentPos = transform.position;
+        foreach (GameObject t in enemies)
         {
-            var distance = Vector3.Distance(myTransform.position, enemy.transform.position);
-            if (targetDistance > distance)
-                nearestEnemy = enemy;
+            if(t!=null)
+            {
+                float dist = Vector3.Distance(t.transform.position, currentPos);
+                if (dist < minDist && t.renderer.isVisible)
+                {
+                    tMin = t.transform;
+                    minDist = dist;
+                }
+            }
+            
         }
+        return tMin ?? myTransform;
+    }
 
-     //   myTransform.LookAt(nearestEnemy.transform);
-        LookAt(nearestEnemy.transform);
-	
-	}
 
 
     void LookAt(Transform transform)
