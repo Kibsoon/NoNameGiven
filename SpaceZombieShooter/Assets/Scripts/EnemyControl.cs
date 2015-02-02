@@ -32,7 +32,8 @@ public class EnemyControl : MonoBehaviour {
         target = GameObject.FindWithTag("Friend");
         player = GameObject.Find("Player");
         camera = GameObject.FindWithTag("MainCamera");
-        playerControl = player.GetComponent<PlayerControl>();
+        if(player)
+            playerControl = player.GetComponent<PlayerControl>();
         shooting = false;
         Awake();
 
@@ -43,7 +44,7 @@ public class EnemyControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        if (!target || !player)
+        if (!target || !player || !playerControl)
             return;
 
       //  var speed = 1.0f;
