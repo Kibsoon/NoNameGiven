@@ -16,7 +16,7 @@ public class PointsManager : MonoBehaviour {
 	public GUIText youLoseGUI;
 
 
-	private float money = 0f;
+	public float money = 0f;
 	public GUIText MoneyGUI;
 
 	private string path = @"scores.txt";
