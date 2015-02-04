@@ -6,7 +6,7 @@ using System;
 public class PointsManager : MonoBehaviour {
 
 	public GUIText scorePointsGUI;
-	private float points = 0f;
+	public double points = 0f;
 	public float pointsForEnemy1 = 50f;
 	public float pointsForEnemy2 = 50f;
 	public float pointsForEnemy3 = 200f;

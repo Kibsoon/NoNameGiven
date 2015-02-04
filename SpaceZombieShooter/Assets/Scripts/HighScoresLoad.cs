@@ -5,7 +5,7 @@ using System.IO;
 
 public class HighScoresLoad : MonoBehaviour {
 
-	private List<float> highscores = new List<float>();
+	private List<double> highscores = new List<double>();
 
 	private string path = @"scores.txt";
 
@@ -36,13 +36,13 @@ public class HighScoresLoad : MonoBehaviour {
 
 			if(text != null)
 			{
-				highscores.Add( float.Parse(text) );
+				highscores.Add( double.Parse(text) );
 			}
 
 		}
 
 
-		highscores.Sort( delegate (float t1, float t2) 
+		highscores.Sort( delegate (double t1, double t2) 
 		                { return (t2.CompareTo(t1)); } 
 		);
 
